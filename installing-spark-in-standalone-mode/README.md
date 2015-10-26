@@ -40,8 +40,9 @@ val conf = new SparkConf().setAppName("HelloWorld").setMaster("spark://123.456.7
 sbt assembly
 ```
 
-* This will create a jar file. We will submit it to the server with:
+* This will create a jar file. Copy it to the spark/bin folder of each worker node using scp.
+* We then will submit the job to the server with:
 
 ```bash
-./spark-submit --master spark://123.456.789.123:7077 --class HelloWorld /path/to/HelloWorld/target/scala-2.10/HelloWorld-assembly-1.0.jar
+./spark-submit --deploy-mode cluster --master spark://123.456.789.123:6066 --class HelloWorld /home/user/spark-1.5.1-bin/hadoop2.6/bin/HelloWorld-assembly-1.0.jar
 ```
