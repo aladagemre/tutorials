@@ -1,0 +1,225 @@
+<!DOCTYPE HTML>
+
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<title>Running RStudio on Remote Server - Tutorials by Ahmet Emre Aladağ</title>
+	<meta name="author" content="map[name:Ahmet Emre Aladağ email:aladagemre@gmail.com website:http://www.emrealadag.com]">
+
+	
+	
+	<meta name="description" content="">
+	
+
+	
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+	<link href='/index.xml' rel="alternate" title="Tutorials by Ahmet Emre Aladağ" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tutorials.emrealadag.com/post/running-rstudio-on-remote-server/">
+	<link href="http://tutorials.emrealadag.com/favicon.png" rel="shortcut icon">
+	<link href="http://tutorials.emrealadag.com/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="http://tutorials.emrealadag.com/css/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	
+	<script src="http://tutorials.emrealadag.com/js/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5('aladagemre@gmail.com') + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+	
+</div>
+
+<nav id="main-nav"><ul class="main">
+    <li><a href="http://tutorials.emrealadag.com/">Tutorial Home</a></li>
+    <li><a href="http://www.emrealadag.com">Personal Site</a></li>
+    <li><a href="http://tutorials.emrealadag.com/post/">Archives</a></li>
+</ul>
+
+
+<section class="aboutme">
+  <p>
+    Tutorials by Ahmet Emre Aladağ.
+  </p>
+</section>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+			<a class="google" href='https://plus.google.com/ahmetemrealadag' rel="author" title="Google+">Google+</a>
+		
+		
+			<a class="twitter" href='http://twitter.com/aladagemre' title="Twitter">Twitter</a>
+		
+		
+			<a class="github" href='https://github.com/aladagemre' title="GitHub">GitHub</a>
+		
+		
+		
+		
+			<a class="linkedin" href='http://www.linkedin.com/in/ahmet-emre-aladag' title="LinkedIn">LinkedIn</a>
+		
+		
+			<a class="pinterest" href='https://pinterest.com/aladagemre' title="Pinterest">Pinterest</a>
+		
+		
+		
+		
+		
+			<a class="quora" href='https://quora.com/aladagemre' title="Quora">Quora</a>
+		
+		
+			<a class="instagram" href='https://instagram.com/aladag.emre' title="Instagram">Instagram</a>
+		
+    	
+    	
+			<a class="rss" href='/index.xml' title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>
+			</div>
+		</div>
+		<div class="mid-col">
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner">
+					<div itemscope itemtype="http://schema.org/Blog">
+					<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <h1 class="title" itemprop="name">Running RStudio on Remote Server</h1>
+	<div class="entry-content" itemprop="articleBody">
+        <p>In this tutorial, we are going to build a Remote R Server. Following this tutorial, you will be able to run your R codes on a remote server so that it runs more efficiently or it doesn&rsquo;t heat up your laptop. You can read the <a href="https://support.rstudio.com/hc/en-us/articles/200552306-Getting-Started">detailed benefits</a>. You can use any remote server for this purpose. You can use AWS, DigitalOcean, Scaleway.</p>
+
+<p><strong>Warning:</strong> Scaleway has currently ARM processors thus require compilation from source code. Also some R packages are not compatible with ARM processors.</p>
+
+<p>See <a href="https://www.rstudio.com/products/rstudio/download-server/">RStudio server installation page</a> for up-to-date version.</p>
+
+<p>On your server install R-base:</p>
+
+<pre><code>$ sudo apt-get install r-base
+</code></pre>
+
+<p>Then we will install RStudio server. If you processor is 64 bit:</p>
+
+<pre><code>$ sudo apt-get install gdebi-core
+$ wget https://download2.rstudio.org/rstudio-server-0.99.486-amd64.deb
+$ sudo gdebi rstudio-server-0.99.486-amd64.deb
+</code></pre>
+
+<p>If it&rsquo;s 32 bit:</p>
+
+<pre><code>$ sudo apt-get install gdebi-core
+$ wget https://download2.rstudio.org/rstudio-server-0.99.486-i386.deb
+$ sudo gdebi rstudio-server-0.99.486-i386.deb
+</code></pre>
+
+<p>If you are using Scaleway, your processor is ARM. So you have to compile RServer on your own. See the <a href="https://github.com/jrowen/ARM-rstudio-server">build script</a> for this purpose. This script was prepared for Chromebook, so you don&rsquo;t have to follow the guideline provided there.</p>
+
+<pre><code>$ git clone https://github.com/jrowen/ARM-rstudio-server
+$ cd ARM-rstudio-server
+$ sh build_rstudio.sh
+</code></pre>
+
+<p>This can take a while (maybe an hour). You can use nohup or  <a href="http://askubuntu.com/questions/8653/how-to-keep-processes-running-after-ending-ssh-session">tmux</a> to avoid losing your session.</p>
+
+<p>Check if rstudio-server.service file exists. If it doesn&rsquo;t, copy it:</p>
+
+<pre><code>$ ls /etc/systemd/system/rstudio-server.service
+$ cp src/cpp/server/extras/systemd/rstudio-server.service /etc/systemd/system/
+</code></pre>
+
+<p>Now we can start rstudio-server service with:</p>
+
+<pre><code>$ service rstudio-server start
+$ service --status-all
+</code></pre>
+
+<p>You should see a + sign in front of rstudio-server. In order to login the web panel, you have to create a custom user.</p>
+
+<pre><code>$ adduser michael
+</code></pre>
+
+<p>Answer the questions and now you can access your web panel via http://<server-ip>:8787 with your user michael. In this panel, you can use web-based RStudio.</p>
+
+<p>Some requirements could be Pandoc for Knitting HTML, MySQL Client for RMySQL:</p>
+
+<pre><code>$ sudo apt-get install pandoc
+$ libmysqlclient-dev
+</code></pre>
+
+<p>Nevertheless, you may encounter some packages (like caret) being missing due to ARM incompatibility.</p>
+
+        
+        <p style="margin-bottom: 0">
+           <a href="https://twitter.com/aladagemre" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @aladagemre</a>
+           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </p>
+        
+    </div>
+</article>
+					
+						<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_button_google_plusone" g:plusone:size=''></a>
+	
+	
+	</div>
+	
+  	<script type="text/javascript" src='http://s7.addthis.com/js/250/addthis_widget.js#pubid='></script>
+  	
+</div>
+
+					
+					
+					
+
+
+				    </div>
+				</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2015
+
+    Ahmet Emre Aladağ
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a>
+<script src="http://tutorials.emrealadag.com/js/slash.js"></script>
+<script src="http://tutorials.emrealadag.com/js/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script></footer>
+		</div>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<title>Installing Standalone Spark Cluster - Tutorials by Ahmet Emre Aladağ</title>
+	<meta name="author" content="map[website:http://www.emrealadag.com name:Ahmet Emre Aladağ email:aladagemre@gmail.com]">
+
+	
+	  
+	<meta name="description" content="Installing Standalone Spark Cluster">
+	
+
+	
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+	<link href='/index.xml' rel="alternate" title="Tutorials by Ahmet Emre Aladağ" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tutorials.emrealadag.com/post/installing-standalone-spark-cluster/">
+	<link href="http://tutorials.emrealadag.com/favicon.png" rel="shortcut icon">
+	<link href="http://tutorials.emrealadag.com/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="http://tutorials.emrealadag.com/css/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	
+	<script src="http://tutorials.emrealadag.com/js/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5('aladagemre@gmail.com') + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+	
+</div>
+
+<nav id="main-nav"><ul class="main">
+    <li><a href="http://tutorials.emrealadag.com/">Tutorial Home</a></li>
+    <li><a href="http://www.emrealadag.com">Personal Site</a></li>
+    <li><a href="http://tutorials.emrealadag.com/post/">Archives</a></li>
+</ul>
+
+
+<section class="aboutme">
+  <p>
+    Tutorials by Ahmet Emre Aladağ.
+  </p>
+</section>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+			<a class="google" href='https://plus.google.com/ahmetemrealadag' rel="author" title="Google+">Google+</a>
+		
+		
+			<a class="twitter" href='http://twitter.com/aladagemre' title="Twitter">Twitter</a>
+		
+		
+			<a class="github" href='https://github.com/aladagemre' title="GitHub">GitHub</a>
+		
+		
+		
+		
+			<a class="linkedin" href='http://www.linkedin.com/in/ahmet-emre-aladag' title="LinkedIn">LinkedIn</a>
+		
+		
+			<a class="pinterest" href='https://pinterest.com/aladagemre' title="Pinterest">Pinterest</a>
+		
+		
+		
+		
+		
+			<a class="quora" href='https://quora.com/aladagemre' title="Quora">Quora</a>
+		
+		
+			<a class="instagram" href='https://instagram.com/aladag.emre' title="Instagram">Instagram</a>
+		
+    	
+    	
+			<a class="rss" href='/index.xml' title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>
+			</div>
+		</div>
+		<div class="mid-col">
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner">
+					<div itemscope itemtype="http://schema.org/Blog">
+					<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <h1 class="title" itemprop="name">Installing Standalone Spark Cluster</h1>
+	<div class="entry-content" itemprop="articleBody">
+        
+
+<h1 id="installing-spark-in-standalone-mode:55f44a8afacb8e5eb85361a9acfcba6d">Installing Spark in Standalone Mode</h1>
+
+<p>You can install and run Spark without needing to install YARN or Hadoop. Make sure your system has Java JDK installed. Just download the latest binary Spark with Hadoop version and extract it.</p>
+
+<p>For demo, let us assume our master server IP is 123.456.789.123.</p>
+
+<h2 id="running-the-master-service:55f44a8afacb8e5eb85361a9acfcba6d">Running the master service</h2>
+
+<ul>
+<li>Give the following commands:</li>
+</ul>
+
+<pre><code class="language-bash">export SPARK_MASTER_IP=123.456.789.123
+export MASTER=spark://${SPARK_MASTER_IP}:7077
+./sbin/start-master.sh -h 0.0.0.0
+</code></pre>
+
+<ul>
+<li>This will start the master and let it listen everybody (out of the network). It will use as much as memory and CPU it can. Now locate to the <a href="http://123.456.789.123:8080">http://123.456.789.123:8080</a> port and see the control panel of the master service.</li>
+</ul>
+
+<h2 id="running-the-slave-service:55f44a8afacb8e5eb85361a9acfcba6d">Running the slave service</h2>
+
+<ul>
+<li>After installing the master, you can run a slave node (either on the same machine or another machine) with:</li>
+</ul>
+
+<pre><code class="language-bash">export SPARK_MASTER_IP=123.456.789.123
+export MASTER=spark://${SPARK_MASTER_IP}:7077
+./sbin/start-slave.sh $MASTER
+</code></pre>
+
+<ul>
+<li>We need to have a folder to store jar files:</li>
+</ul>
+
+<pre><code class="language-bash">mkdir /home/user/jars
+</code></pre>
+
+<h2 id="submitting-a-job-to-the-spark-master:55f44a8afacb8e5eb85361a9acfcba6d">Submitting a job to the Spark master</h2>
+
+<ul>
+<li>Install <a href="https://github.com/sbt/sbt-assembly">sbt-assembly</a> and in the project folder package the project with:</li>
+</ul>
+
+<pre><code class="language-bash">sbt assembly
+</code></pre>
+
+<ul>
+<li>This will create a jar file. Copy it to the spark/bin folder of each worker node using scp:</li>
+</ul>
+
+<pre><code class="language-bash">scp HelloWorld-assembly-1.0.jar user@123.456.789:/home/user/jars
+</code></pre>
+
+<ul>
+<li>We then will submit the job to the server with:</li>
+</ul>
+
+<pre><code class="language-bash">./spark-submit --deploy-mode cluster --master spark://123.456.789.123:6066 --class HelloWorld /home/user/jars/HelloWorld-assembly-1.0.jar
+</code></pre>
+
+        
+        <p style="margin-bottom: 0">
+           <a href="https://twitter.com/aladagemre" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @aladagemre</a>
+           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </p>
+        
+    </div>
+</article>
+					
+						<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_button_google_plusone" g:plusone:size=''></a>
+	
+	
+	</div>
+	
+  	<script type="text/javascript" src='http://s7.addthis.com/js/250/addthis_widget.js#pubid='></script>
+  	
+</div>
+
+					
+					
+					
+
+
+				    </div>
+				</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2015
+
+    Ahmet Emre Aladağ
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a>
+<script src="http://tutorials.emrealadag.com/js/slash.js"></script>
+<script src="http://tutorials.emrealadag.com/js/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script></footer>
+		</div>
+	</div>
+	
+</body>
+</html>
