@@ -3,7 +3,7 @@
   <channel>
       <title>R on Tutorials by Ahmet Emre Aladağ </title>
       <generator uri="https://gohugo.io">Hugo</generator>
-    <link>http://tutorials.emrealadag.com/tags/r/</link>
+    <link>http://tuts.emrealadag.com/tags/r/</link>
     <language>en-us</language>
     <author>Ahmet Emre Aladağ</author>
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>Running RStudio on Remote Server</title>
-      <link>http://tutorials.emrealadag.com/post/running-rstudio-on-remote-server/</link>
+      <link>http://tuts.emrealadag.com/post/running-rstudio-on-remote-server/</link>
       <pubDate>Mon, 23 Nov 2015 16:14:21 EET</pubDate>
       <author>Ahmet Emre Aladağ</author>
-      <guid>http://tutorials.emrealadag.com/post/running-rstudio-on-remote-server/</guid>
+      <guid>http://tuts.emrealadag.com/post/running-rstudio-on-remote-server/</guid>
       <description>&lt;p&gt;In this tutorial, we are going to build a Remote R Server. Following this tutorial, you will be able to run your R codes on a remote server so that it runs more efficiently or it doesn&amp;rsquo;t heat up your laptop. You can read the &lt;a href=&#34;https://support.rstudio.com/hc/en-us/articles/200552306-Getting-Started&#34;&gt;detailed benefits&lt;/a&gt;. You can use any remote server for this purpose. You can use AWS, DigitalOcean, Scaleway.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; Scaleway has currently ARM processors thus require compilation from source code. Also some R packages are not compatible with ARM processors.&lt;/p&gt;

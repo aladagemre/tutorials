@@ -3,7 +3,7 @@
   <channel>
       <title>Spark on Tutorials by Ahmet Emre Aladağ </title>
       <generator uri="https://gohugo.io">Hugo</generator>
-    <link>http://tutorials.emrealadag.com/tags/spark/</link>
+    <link>http://tuts.emrealadag.com/tags/spark/</link>
     <language>en-us</language>
     <author>Ahmet Emre Aladağ</author>
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>Installing Standalone Spark Cluster</title>
-      <link>http://tutorials.emrealadag.com/post/installing-standalone-spark-cluster/</link>
+      <link>http://tuts.emrealadag.com/post/installing-standalone-spark-cluster/</link>
       <pubDate>Mon, 26 Oct 2015 16:09:37 EET</pubDate>
       <author>Ahmet Emre Aladağ</author>
-      <guid>http://tutorials.emrealadag.com/post/installing-standalone-spark-cluster/</guid>
+      <guid>http://tuts.emrealadag.com/post/installing-standalone-spark-cluster/</guid>
       <description>
 
 &lt;h1 id=&#34;installing-spark-in-standalone-mode:55f44a8afacb8e5eb85361a9acfcba6d&#34;&gt;Installing Spark in Standalone Mode&lt;/h1&gt;

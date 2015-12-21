@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://tutorials.emrealadag.com/</loc>
+    <loc>http://tuts.emrealadag.com/</loc>
     <lastmod>2015-11-23T16:14:21+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://tutorials.emrealadag.com/post/running-rstudio-on-remote-server/</loc>
+    <loc>http://tuts.emrealadag.com/post/running-rstudio-on-remote-server/</loc>
     <lastmod>2015-11-23T16:14:21+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://tutorials.emrealadag.com/post/installing-standalone-spark-cluster/</loc>
+    <loc>http://tuts.emrealadag.com/post/installing-standalone-spark-cluster/</loc>
     <lastmod>2015-10-26T16:09:37+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://tutorials.emrealadag.com/post/running-play-apps-via-docker/</loc>
+    <loc>http://tuts.emrealadag.com/post/running-play-apps-via-docker/</loc>
     <lastmod>2015-10-03T16:40:59+02:00</lastmod>
   </url>
   

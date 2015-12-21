@@ -3,7 +3,7 @@
   <channel>
       <title>Scala on Tutorials by Ahmet Emre Aladağ </title>
       <generator uri="https://gohugo.io">Hugo</generator>
-    <link>http://tutorials.emrealadag.com/tags/scala/</link>
+    <link>http://tuts.emrealadag.com/tags/scala/</link>
     <language>en-us</language>
     <author>Ahmet Emre Aladağ</author>
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>Running Play Apps via Docker</title>
-      <link>http://tutorials.emrealadag.com/post/running-play-apps-via-docker/</link>
+      <link>http://tuts.emrealadag.com/post/running-play-apps-via-docker/</link>
       <pubDate>Sat, 03 Oct 2015 16:40:59 &#43;0200</pubDate>
       <author>Ahmet Emre Aladağ</author>
-      <guid>http://tutorials.emrealadag.com/post/running-play-apps-via-docker/</guid>
+      <guid>http://tuts.emrealadag.com/post/running-play-apps-via-docker/</guid>
       <description>
 
 &lt;p&gt;In this tutorial, I will guide you running your Play framework application (named MyProject in our tutorial) via Docker. I assume you have created a Play project with a build.sbt (or equivalent) file and make sure it&amp;rsquo;s running on port 9000 with sbt run command.&lt;/p&gt;
