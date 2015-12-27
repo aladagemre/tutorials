@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Tutorials by Ahmet Emre Aladağ</title>
-	<meta name="author" content="map[email:aladagemre@gmail.com website:http://www.emrealadag.com name:Ahmet Emre Aladağ]">
+	<meta name="author" content="map[name:Ahmet Emre Aladağ email:aladagemre@gmail.com website:http://www.emrealadag.com]">
 
 	
 	
@@ -124,6 +124,35 @@
 					
 					<div itemscope itemtype="http://schema.org/Blog">
 					
+				        <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+    <div class="meta">
+		<div class="date"><time datetime='Sun, Dec 27, 2015' data-updated="true" itemprop="datePublished">Sun, Dec 27, 2015</time>
+</div>
+		<div class="tags">
+
+
+	
+	
+		<a href="http://tuts.emrealadag.com/tags/python"> python </a>,
+	
+
+	
+	
+	    <a href="http://tuts.emrealadag.com/tags/ubuntu"> ubuntu </a>
+	
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="http://tuts.emrealadag.com/post/ubuntu-service-for-flask-server/" itemprop="url">Creating Ubuntu Service for Flask server</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		Let&rsquo;s say you have a flask app and you want to create an Ubuntu service for this app. This way, the service will restart whenever the server restarts or the service fails. Here is a sample flask app on /home/user/server.py: #!/usr/bin/python from flask import Flask, request app = Flask(__name__) @app.route('/', methods=['GET']) def index(): return &quot;Hello world&quot; if __name__ == '__main__': app.run(host=&quot;0.0.0.0&quot;, port=31013) We have to write the following service configuration in /etc/init/flask.conf: description &quot;flask&quot; start on stopped rc RUNLEVEL=[2345] respawn exec python /home/user/server.py Try sudo service flask start.
+		<a href="http://tuts.emrealadag.com/post/ubuntu-service-for-flask-server/" class="more-link">Read on →</a>
+	</div>
+</article>
+
+				    
 				        <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
     <div class="meta">
 		<div class="date"><time datetime='Mon, Nov 23, 2015' data-updated="true" itemprop="datePublished">Mon, Nov 23, 2015</time>

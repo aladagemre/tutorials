@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Python on Tutorials by Ahmet Emre Aladağ </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://tuts.emrealadag.com/tags/python/</link>
+    <language>en-us</language>
+    <author>Ahmet Emre Aladağ</author>
+    
+    <updated>Sun, 27 Dec 2015 19:09:21 EET</updated>
+    
+    <item>
+      <title>Creating Ubuntu Service for Flask server</title>
+      <link>http://tuts.emrealadag.com/post/ubuntu-service-for-flask-server/</link>
+      <pubDate>Sun, 27 Dec 2015 19:09:21 EET</pubDate>
+      <author>Ahmet Emre Aladağ</author>
+      <guid>http://tuts.emrealadag.com/post/ubuntu-service-for-flask-server/</guid>
+      <description>&lt;p&gt;Let&amp;rsquo;s say you have a flask app and you want to create an Ubuntu service for this app. This way, the service will restart whenever the server restarts or the service fails. Here is a sample flask app on &lt;strong&gt;/home/user/server.py&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/python
+from flask import Flask, request
+app = Flask(__name__)
+@app.route(&#39;/&#39;, methods=[&#39;GET&#39;])
+def index():
+    return &amp;quot;Hello world&amp;quot;
+
+if __name__ == &#39;__main__&#39;:
+   app.run(host=&amp;quot;0.0.0.0&amp;quot;, port=31013)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We have to write the following service configuration in &lt;strong&gt;/etc/init/flask.conf&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;description &amp;quot;flask&amp;quot;
+start on stopped rc RUNLEVEL=[2345]
+respawn
+exec python /home/user/server.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Try &lt;strong&gt;sudo service flask start&lt;/strong&gt;. If you receive any error, you may have to create an additional file &lt;strong&gt;/lib/systemd/system/flask.service&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[Unit]
+Description=Flask web server
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+User=root
+Group=root
+PermissionsStartOnly=true
+ExecStart=/home/user/server.py
+TimeoutSec=600
+Restart=on-failure
+RuntimeDirectoryMode=755
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You now can &lt;strong&gt;sudo service flask start/stop/status&lt;/strong&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
