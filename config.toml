@@ -40,6 +40,6 @@ google_plus_one = "true"
 # follow links
 twitter_follow = true
 
-disqus_short_name = ""
+disqus_short_name = "emrealadag"
 disqus_show_comment_count = false
-google_analytics_tracking_id = ""
+google_analytics_tracking_id = "UA-2553826-1"
