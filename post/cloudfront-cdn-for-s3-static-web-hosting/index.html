@@ -1,0 +1,322 @@
+<!DOCTYPE HTML>
+
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<title>Cloudfront CDN for Amazon S3 Static Web Hosting - Tutorials by Ahmet Emre Aladağ</title>
+	<meta name="author" content="map[name:Ahmet Emre Aladağ email:aladagemre@gmail.com website:http://www.emrealadag.com]">
+
+	
+	  
+	<meta name="description" content="Installing Standalone Spark Cluster">
+	
+
+	
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+	<link href='/index.xml' rel="alternate" title="Tutorials by Ahmet Emre Aladağ" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tuts.emrealadag.com/post/cloudfront-cdn-for-s3-static-web-hosting/">
+	<link href="http://tuts.emrealadag.com/favicon.png" rel="shortcut icon">
+	<link href="http://tuts.emrealadag.com/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="http://tuts.emrealadag.com/css/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-2553826-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	
+	<script src="http://tuts.emrealadag.com/js/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5('aladagemre@gmail.com') + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+	
+</div>
+
+<nav id="main-nav"><ul class="main">
+    <li><a href="http://tuts.emrealadag.com/">Tutorial Home</a></li>
+    <li><a href="http://www.emrealadag.com">Personal Site</a></li>
+    <li><a href="http://tuts.emrealadag.com/post/">Archives</a></li>
+</ul>
+
+
+<section class="aboutme">
+  <p>
+    Tutorials by Ahmet Emre Aladağ.
+  </p>
+</section>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+			<a class="google" href='https://plus.google.com/ahmetemrealadag' rel="author" title="Google+">Google+</a>
+		
+		
+			<a class="twitter" href='http://twitter.com/aladagemre' title="Twitter">Twitter</a>
+		
+		
+			<a class="github" href='https://github.com/aladagemre' title="GitHub">GitHub</a>
+		
+		
+		
+		
+			<a class="linkedin" href='http://www.linkedin.com/in/ahmet-emre-aladag' title="LinkedIn">LinkedIn</a>
+		
+		
+			<a class="pinterest" href='https://pinterest.com/aladagemre' title="Pinterest">Pinterest</a>
+		
+		
+		
+		
+		
+			<a class="quora" href='https://quora.com/aladagemre' title="Quora">Quora</a>
+		
+		
+			<a class="instagram" href='https://instagram.com/aladag.emre' title="Instagram">Instagram</a>
+		
+    	
+    	
+			<a class="rss" href='/index.xml' title="RSS">RSS</a>
+		
+	</div>
+</nav>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</header>
+			</div>
+		</div>
+		<div class="mid-col">
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner">
+					<div itemscope itemtype="http://schema.org/Blog">
+					<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <h1 class="title" itemprop="name">Cloudfront CDN for Amazon S3 Static Web Hosting</h1>
+	<div class="entry-content" itemprop="articleBody">
+        
+
+<p>In this post, I will be guiding you how to setup an Amazon S3 bucket as a static website, then configure CloudFront CDN to serve in front of Amazon S3. Outline is as following:</p>
+
+<ul>
+<li>Create a S3 Bucket</li>
+<li>Configure Amazon S3 to serve as a static website</li>
+<li>Create Cloudfront distribution.</li>
+<li>Set Route53 records</li>
+<li>Restrict S3 access to Cloudfront</li>
+</ul>
+
+<h2 id="amazon-s3:002aebe340d456bc11a63f3385f2d580">Amazon S3</h2>
+
+<p>Create an S3 bucket and then follow <strong>Amazon S3 bucket properties</strong> -&gt; <strong>Permissions</strong> -&gt; <strong>Edit bucket policy</strong> and paste the following text.</p>
+
+<pre><code class="language-json">{
+	&quot;Version&quot;: &quot;2012-10-17&quot;,
+	&quot;Statement&quot;: [
+		{
+			&quot;Sid&quot;: &quot;PublicReadGetObject&quot;,
+			&quot;Effect&quot;: &quot;Allow&quot;,
+			&quot;Principal&quot;: &quot;*&quot;,
+			&quot;Action&quot;: &quot;s3:GetObject&quot;,
+			&quot;Resource&quot;: &quot;arn:aws:s3:::www.mysite.com/*&quot;
+		}
+	]
+}
+</code></pre>
+
+<p>Amazon S3 bucket properties -&gt; Static Web Hosting, choose <strong>Enable website hosting</strong> and provide Index Document as <em>index.html</em>. You will see the site url there: <em>www.mysite.com.s3-website-eu-west-1.amazonaws.com</em>. Now upload some file and check if your site is working.</p>
+
+<h2 id="cloudfront:002aebe340d456bc11a63f3385f2d580">Cloudfront</h2>
+
+<p>Navigate to CloudFront. Click on <a href="https://console.aws.amazon.com/cloudfront/home?region=us-east-1#create-distribution:">Create Distribution</a> button. Choose <strong>Get Started</strong> below <strong>Web</strong>.</p>
+
+<ul>
+<li><strong>Origin Domain Name</strong>: <em>www.mysite.com.s3-website-eu-west-1.amazonaws.com</em> (write the path you see in Amazon S3 bucket properties -&gt; Static Web Hosting -&gt; Endpoint: <em>www.mysite.com.s3-website-eu-west-1.amazonaws.com</em>). You could choose your S3 Bucket here but if you do so, you won&rsquo;t be able to display subdirectories: <em><a href="http://www.mysite.com/blog/">http://www.mysite.com/blog/</a></em> which contains a index.html. You will have to call index.html explicitly (<em><a href="http://www.mysite.com/blog/index.html">http://www.mysite.com/blog/index.html</a></em>).</li>
+<li><strong>Origin Path:</strong> Empty or <em>/</em></li>
+<li><strong>Origin ID:</strong> Enter a descriptive ID for this origin: S3-mysite.com</li>
+<li><strong>Compress Objects Automatically:</strong> Yes</li>
+<li><strong>Price Class:</strong> US and Europe</li>
+
+<li><p><strong>Alternate Domain Names (CNAMEs):</strong> Enter the domain names you would like to redirect to Cloudfront, one at each line. If you don&rsquo;t specify your domains here, you will get an <strong>Access Denied</strong> error.</p>
+
+<pre><code>cloudfront.mysite.com
+www.mysite.com
+mysite.com
+</code></pre></li>
+
+<li><p><strong>Default Root Object:</strong> <em>index.html</em> (If you don&rsquo;t put this, you will get access denied unless you provide full path to the html file.)</p></li>
+</ul>
+
+<p>Then press <strong>Create Distribution</strong>. In the distributon list, you will see Domain Name column. We will use the domain name written here (<em>abcdefghi.cloudfront.net</em>) on Route53. It may take some time to see the system has been fully deployed.</p>
+
+<h2 id="route53:002aebe340d456bc11a63f3385f2d580">Route53</h2>
+
+<p>Add <em>A record</em> for your Hosted Zone.</p>
+
+<ul>
+<li><strong>Name:</strong> cloudfront.mysite.com.</li>
+<li><strong>Type:</strong> <em>A - IPv4 Address</em></li>
+<li><strong>Alias:</strong> <em>Yes</em>.</li>
+<li><strong>Alias Target:</strong> <em>abcdefghi.cloudfront.net.</em></li>
+</ul>
+
+<p>Then press <strong>Create</strong>. It may take some time until cloudfront.mysite.com is propagated to DNS servers. When Cloudfront is deployed and enabled, Route 53 A records are active, you will see your website on <em>cloudfront.mysite.com</em></p>
+
+<p>Check if your site is served through CloudFront:</p>
+
+<pre><code class="language-bash">curl -svo /dev/null http://www.mysite.com
+</code></pre>
+
+<p>Check if you can access subdirectories like <em><a href="http://cloudfront.mysite.com/blog/">http://cloudfront.mysite.com/blog/</a></em> after placing an index.html in it.</p>
+
+<p>If it works, create a similar A Record for www.mysite.com and mysite.com</p>
+
+<h2 id="going-back-to-s3:002aebe340d456bc11a63f3385f2d580">Going Back to S3</h2>
+
+<p>If you wish to stop using Cloudfront and go back to S3 serving, update www.mysite.com A record alias. Delete the URL written there, then a list will appear. Choose your S3 bucket (www.mysite.com) and <strong>Save Record Set</strong>.</p>
+
+<h2 id="restricting-s3-access-to-cloudfront:002aebe340d456bc11a63f3385f2d580">Restricting S3 access to Cloudfront</h2>
+
+<p>You may want to allow only CloudFront to access your S3 Bucket so that DDoS attackers can&rsquo;t attack on your S3 bucket&rsquo;s web endpoint, causing you thousands of dollars.</p>
+
+<h3 id="cloudfront-1:002aebe340d456bc11a63f3385f2d580">Cloudfront</h3>
+
+<p>Click on your distribution, navigate to <strong>Origins</strong> tab, choose origin in the list and press <strong>Edit</strong>. Add a new header on <strong>Origin Custom Headers</strong>.</p>
+
+<ul>
+<li><strong>Header Name:</strong> User-Agent</li>
+<li><strong>Value:</strong> abcdefghi123 (replace this with something random, this will be the password)</li>
+</ul>
+
+<p>Now Amazon Cloudfront will add <em>User-Agent: abcdefghi123</em> on each request it is forwarding to Amazon S3.</p>
+
+<h3 id="amazon-s3-1:002aebe340d456bc11a63f3385f2d580">Amazon S3</h3>
+
+<p>On S3 permissions, click Bucket Policy Editor and fill is as the following. This will limit the resources to AWS network and allow only requests from User Agent &ldquo;abcdefghi123&rdquo;. Only the ones who provide this password through User-Agent will be able to access the bucket.</p>
+
+<pre><code class="language-json">{
+	&quot;Version&quot;: &quot;2012-10-17&quot;,
+	&quot;Statement&quot;: [
+		{
+			&quot;Sid&quot;: &quot;PublicReadGetObject&quot;,
+			&quot;Effect&quot;: &quot;Allow&quot;,
+			&quot;Principal&quot;: {
+				&quot;AWS&quot;: &quot;*&quot;
+			},
+			&quot;Action&quot;: &quot;s3:GetObject&quot;,
+			&quot;Resource&quot;: &quot;arn:aws:s3:::www.mysite.com/*&quot;,
+			&quot;Condition&quot;: {
+				&quot;StringEqualsIgnoreCase&quot;: {
+					&quot;aws:UserAgent&quot;: &quot;abcdefghi123&quot;
+				}
+			}
+		}
+	]
+}
+</code></pre>
+
+        
+        <p style="margin-bottom: 0">
+           <a href="https://twitter.com/aladagemre" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @aladagemre</a>
+           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </p>
+        
+    </div>
+</article>
+					
+						<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_button_google_plusone" g:plusone:size=''></a>
+	
+	
+	</div>
+	
+  	<script type="text/javascript" src='http://s7.addthis.com/js/250/addthis_widget.js#pubid='></script>
+  	
+</div>
+
+					
+					
+					<section id="comment">
+					    <h1 class="title">Comments</h1>
+					    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+					</section>
+					
+					
+
+<script type="text/javascript">
+    
+    var disqus_shortname = 'emrealadag';
+
+    
+    
+
+    
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+    
+</script>
+
+
+				    </div>
+				</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2016
+
+    Ahmet Emre Aladağ
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a>
+<script src="http://tuts.emrealadag.com/js/slash.js"></script>
+<script src="http://tuts.emrealadag.com/js/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script></footer>
+		</div>
+	</div>
+	
+</body>
+</html>

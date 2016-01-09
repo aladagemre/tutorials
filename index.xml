@@ -7,7 +7,136 @@
     <language>en-us</language>
     <author>Ahmet Emre Aladağ</author>
     
-    <updated>Sun, 27 Dec 2015 19:09:21 EET</updated>
+    <updated>Sun, 10 Jan 2016 16:09:37 EET</updated>
+    
+    <item>
+      <title>Cloudfront CDN for Amazon S3 Static Web Hosting</title>
+      <link>http://tuts.emrealadag.com/post/cloudfront-cdn-for-s3-static-web-hosting/</link>
+      <pubDate>Sun, 10 Jan 2016 16:09:37 EET</pubDate>
+      <author>Ahmet Emre Aladağ</author>
+      <guid>http://tuts.emrealadag.com/post/cloudfront-cdn-for-s3-static-web-hosting/</guid>
+      <description>
+
+&lt;p&gt;In this post, I will be guiding you how to setup an Amazon S3 bucket as a static website, then configure CloudFront CDN to serve in front of Amazon S3. Outline is as following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Create a S3 Bucket&lt;/li&gt;
+&lt;li&gt;Configure Amazon S3 to serve as a static website&lt;/li&gt;
+&lt;li&gt;Create Cloudfront distribution.&lt;/li&gt;
+&lt;li&gt;Set Route53 records&lt;/li&gt;
+&lt;li&gt;Restrict S3 access to Cloudfront&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;amazon-s3:002aebe340d456bc11a63f3385f2d580&#34;&gt;Amazon S3&lt;/h2&gt;
+
+&lt;p&gt;Create an S3 bucket and then follow &lt;strong&gt;Amazon S3 bucket properties&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Permissions&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Edit bucket policy&lt;/strong&gt; and paste the following text.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+	&amp;quot;Version&amp;quot;: &amp;quot;2012-10-17&amp;quot;,
+	&amp;quot;Statement&amp;quot;: [
+		{
+			&amp;quot;Sid&amp;quot;: &amp;quot;PublicReadGetObject&amp;quot;,
+			&amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
+			&amp;quot;Principal&amp;quot;: &amp;quot;*&amp;quot;,
+			&amp;quot;Action&amp;quot;: &amp;quot;s3:GetObject&amp;quot;,
+			&amp;quot;Resource&amp;quot;: &amp;quot;arn:aws:s3:::www.mysite.com/*&amp;quot;
+		}
+	]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Amazon S3 bucket properties -&amp;gt; Static Web Hosting, choose &lt;strong&gt;Enable website hosting&lt;/strong&gt; and provide Index Document as &lt;em&gt;index.html&lt;/em&gt;. You will see the site url there: &lt;em&gt;www.mysite.com.s3-website-eu-west-1.amazonaws.com&lt;/em&gt;. Now upload some file and check if your site is working.&lt;/p&gt;
+
+&lt;h2 id=&#34;cloudfront:002aebe340d456bc11a63f3385f2d580&#34;&gt;Cloudfront&lt;/h2&gt;
+
+&lt;p&gt;Navigate to CloudFront. Click on &lt;a href=&#34;https://console.aws.amazon.com/cloudfront/home?region=us-east-1#create-distribution:&#34;&gt;Create Distribution&lt;/a&gt; button. Choose &lt;strong&gt;Get Started&lt;/strong&gt; below &lt;strong&gt;Web&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Origin Domain Name&lt;/strong&gt;: &lt;em&gt;www.mysite.com.s3-website-eu-west-1.amazonaws.com&lt;/em&gt; (write the path you see in Amazon S3 bucket properties -&amp;gt; Static Web Hosting -&amp;gt; Endpoint: &lt;em&gt;www.mysite.com.s3-website-eu-west-1.amazonaws.com&lt;/em&gt;). You could choose your S3 Bucket here but if you do so, you won&amp;rsquo;t be able to display subdirectories: &lt;em&gt;&lt;a href=&#34;http://www.mysite.com/blog/&#34;&gt;http://www.mysite.com/blog/&lt;/a&gt;&lt;/em&gt; which contains a index.html. You will have to call index.html explicitly (&lt;em&gt;&lt;a href=&#34;http://www.mysite.com/blog/index.html&#34;&gt;http://www.mysite.com/blog/index.html&lt;/a&gt;&lt;/em&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Origin Path:&lt;/strong&gt; Empty or &lt;em&gt;/&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Origin ID:&lt;/strong&gt; Enter a descriptive ID for this origin: S3-mysite.com&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compress Objects Automatically:&lt;/strong&gt; Yes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Price Class:&lt;/strong&gt; US and Europe&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Alternate Domain Names (CNAMEs):&lt;/strong&gt; Enter the domain names you would like to redirect to Cloudfront, one at each line. If you don&amp;rsquo;t specify your domains here, you will get an &lt;strong&gt;Access Denied&lt;/strong&gt; error.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cloudfront.mysite.com
+www.mysite.com
+mysite.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Default Root Object:&lt;/strong&gt; &lt;em&gt;index.html&lt;/em&gt; (If you don&amp;rsquo;t put this, you will get access denied unless you provide full path to the html file.)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Then press &lt;strong&gt;Create Distribution&lt;/strong&gt;. In the distributon list, you will see Domain Name column. We will use the domain name written here (&lt;em&gt;abcdefghi.cloudfront.net&lt;/em&gt;) on Route53. It may take some time to see the system has been fully deployed.&lt;/p&gt;
+
+&lt;h2 id=&#34;route53:002aebe340d456bc11a63f3385f2d580&#34;&gt;Route53&lt;/h2&gt;
+
+&lt;p&gt;Add &lt;em&gt;A record&lt;/em&gt; for your Hosted Zone.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Name:&lt;/strong&gt; cloudfront.mysite.com.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Type:&lt;/strong&gt; &lt;em&gt;A - IPv4 Address&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Alias:&lt;/strong&gt; &lt;em&gt;Yes&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Alias Target:&lt;/strong&gt; &lt;em&gt;abcdefghi.cloudfront.net.&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Then press &lt;strong&gt;Create&lt;/strong&gt;. It may take some time until cloudfront.mysite.com is propagated to DNS servers. When Cloudfront is deployed and enabled, Route 53 A records are active, you will see your website on &lt;em&gt;cloudfront.mysite.com&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Check if your site is served through CloudFront:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -svo /dev/null http://www.mysite.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Check if you can access subdirectories like &lt;em&gt;&lt;a href=&#34;http://cloudfront.mysite.com/blog/&#34;&gt;http://cloudfront.mysite.com/blog/&lt;/a&gt;&lt;/em&gt; after placing an index.html in it.&lt;/p&gt;
+
+&lt;p&gt;If it works, create a similar A Record for www.mysite.com and mysite.com&lt;/p&gt;
+
+&lt;h2 id=&#34;going-back-to-s3:002aebe340d456bc11a63f3385f2d580&#34;&gt;Going Back to S3&lt;/h2&gt;
+
+&lt;p&gt;If you wish to stop using Cloudfront and go back to S3 serving, update www.mysite.com A record alias. Delete the URL written there, then a list will appear. Choose your S3 bucket (www.mysite.com) and &lt;strong&gt;Save Record Set&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;restricting-s3-access-to-cloudfront:002aebe340d456bc11a63f3385f2d580&#34;&gt;Restricting S3 access to Cloudfront&lt;/h2&gt;
+
+&lt;p&gt;You may want to allow only CloudFront to access your S3 Bucket so that DDoS attackers can&amp;rsquo;t attack on your S3 bucket&amp;rsquo;s web endpoint, causing you thousands of dollars.&lt;/p&gt;
+
+&lt;h3 id=&#34;cloudfront-1:002aebe340d456bc11a63f3385f2d580&#34;&gt;Cloudfront&lt;/h3&gt;
+
+&lt;p&gt;Click on your distribution, navigate to &lt;strong&gt;Origins&lt;/strong&gt; tab, choose origin in the list and press &lt;strong&gt;Edit&lt;/strong&gt;. Add a new header on &lt;strong&gt;Origin Custom Headers&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Header Name:&lt;/strong&gt; User-Agent&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Value:&lt;/strong&gt; abcdefghi123 (replace this with something random, this will be the password)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now Amazon Cloudfront will add &lt;em&gt;User-Agent: abcdefghi123&lt;/em&gt; on each request it is forwarding to Amazon S3.&lt;/p&gt;
+
+&lt;h3 id=&#34;amazon-s3-1:002aebe340d456bc11a63f3385f2d580&#34;&gt;Amazon S3&lt;/h3&gt;
+
+&lt;p&gt;On S3 permissions, click Bucket Policy Editor and fill is as the following. This will limit the resources to AWS network and allow only requests from User Agent &amp;ldquo;abcdefghi123&amp;rdquo;. Only the ones who provide this password through User-Agent will be able to access the bucket.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+	&amp;quot;Version&amp;quot;: &amp;quot;2012-10-17&amp;quot;,
+	&amp;quot;Statement&amp;quot;: [
+		{
+			&amp;quot;Sid&amp;quot;: &amp;quot;PublicReadGetObject&amp;quot;,
+			&amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
+			&amp;quot;Principal&amp;quot;: {
+				&amp;quot;AWS&amp;quot;: &amp;quot;*&amp;quot;
+			},
+			&amp;quot;Action&amp;quot;: &amp;quot;s3:GetObject&amp;quot;,
+			&amp;quot;Resource&amp;quot;: &amp;quot;arn:aws:s3:::www.mysite.com/*&amp;quot;,
+			&amp;quot;Condition&amp;quot;: {
+				&amp;quot;StringEqualsIgnoreCase&amp;quot;: {
+					&amp;quot;aws:UserAgent&amp;quot;: &amp;quot;abcdefghi123&amp;quot;
+				}
+			}
+		}
+	]
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Creating Ubuntu Service for Flask server</title>
