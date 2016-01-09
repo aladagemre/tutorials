@@ -36,7 +36,7 @@ Create an S3 bucket and then follow **Amazon S3 bucket properties** -> **Permiss
 }
 ```
 
-Amazon S3 bucket properties -> Static Web Hosting, choose **Enable website hosting** and provide Index Document as *index.html*.
+Amazon S3 bucket properties -> Static Web Hosting, choose **Enable website hosting** and provide Index Document as *index.html*. You will see the site url there: *www.mysite.com.s3-website-eu-west-1.amazonaws.com*. Now upload some file and check if your site is working.
 
 ## Cloudfront
 
