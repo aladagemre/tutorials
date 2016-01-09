@@ -1,10 +1,10 @@
 +++
-tags = ["installation", "spark"]
-Description = "Installing Standalone Spark Cluster"
-date = "2016-01-10T16:09:37+02:00"
+tags = ["aws", "cloudfront", "s3"]
+Description = "Cloudfront CDN for Amazon S3 Static Web Hosting"
+date = "2016-01-09T12:09:37+02:00"
 menu = "main"
 title = "Cloudfront CDN for Amazon S3 Static Web Hosting"
-summary = "In this tutorial"
+summary = "In this post, I will be guiding you how to setup an Amazon S3 bucket as a static website, then configure CloudFront CDN to serve in front of Amazon S3."
 
 +++
 
