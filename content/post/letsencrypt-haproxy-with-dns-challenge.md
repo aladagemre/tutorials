@@ -1,3 +1,13 @@
++++
+tags = ["aws", "dns", "haproxy", "ssl"]
+Description = "Issuing LetsEncrypt SSL Certificate for HAProxy on Docker with DNS challenge"
+date = "2016-03-17T18:30:37+02:00"
+menu = "main"
+title = "LetsEncrypt HAProxy with DNS challenge"
+summary = "In this post, I will be showing you how to issue LetsEncrypt SSL certificate for your HAProxy running on Docker container."
+
++++
+
 # LetsEncrypt HAProxy with DNS challenge 
 
 In this post, I will be showing you how to issue LetsEncrypt SSL certificate for your HAProxy running on Docker container. We will be using DNS challenge to verify we own the domains. hook.rb script will connect to Amazon Route 53 to update DNS records for this reason.
