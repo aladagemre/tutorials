@@ -8,7 +8,6 @@ summary = "In this post, I will be showing you how to issue LetsEncrypt SSL cert
 
 +++
 
-# LetsEncrypt HAProxy with DNS challenge 
 
 In this post, I will be showing you how to issue LetsEncrypt SSL certificate for your HAProxy running on Docker container. We will be using DNS challenge to verify we own the domains. hook.rb script will connect to Amazon Route 53 to update DNS records for this reason.
 
