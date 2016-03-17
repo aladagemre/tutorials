@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Ssl on Tutorials by Ahmet Emre Aladağ </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://tuts.emrealadag.com/tags/ssl/</link>
+    <language>en-us</language>
+    <author>Ahmet Emre Aladağ</author>
+    
+    <updated>Thu, 17 Mar 2016 18:30:37 EET</updated>
+    
+    <item>
+      <title>LetsEncrypt HAProxy with DNS challenge</title>
+      <link>http://tuts.emrealadag.com/post/letsencrypt-haproxy-with-dns-challenge/</link>
+      <pubDate>Thu, 17 Mar 2016 18:30:37 EET</pubDate>
+      <author>Ahmet Emre Aladağ</author>
+      <guid>http://tuts.emrealadag.com/post/letsencrypt-haproxy-with-dns-challenge/</guid>
+      <description>
+
+&lt;h1 id=&#34;letsencrypt-haproxy-with-dns-challenge:1d0e1bcd6c3f1c605fb6fb3ee4db89c2&#34;&gt;LetsEncrypt HAProxy with DNS challenge&lt;/h1&gt;
+
+&lt;p&gt;In this post, I will be showing you how to issue LetsEncrypt SSL certificate for your HAProxy running on Docker container. We will be using DNS challenge to verify we own the domains. hook.rb script will connect to Amazon Route 53 to update DNS records for this reason.&lt;/p&gt;
+
+&lt;p&gt;letsencrypt.sh will start the challenge and start hook.rb to update DNS records and then check if records are updated.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git clone https://github.com/lukas2511/letsencrypt.sh
+cd letsencrypt.sh
+cp domains.txt.example domains.txt
+cp config.sh.example config.sh
+
+wget https://gist.githubusercontent.com/tache/3b6760784c098c9139c6/raw/33fe6e0791a7d40ce7cdf14019b7d31801d4ab05/hook.rb
+sudo apt-get install ruby
+sudo gem install aws-sdk pry awesome_print domainatrix
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then set your environment variables that can modify Amazon Route 53:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;export AWS_ACCESS_KEY_ID=&amp;quot;xx&amp;quot;
+export AWS_SECRET_ACCESS_KEY=&amp;quot;xx&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Edit config.sh and set the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;CHALLENGETYPE=&amp;quot;dns-01&amp;quot;
+HOOK=&amp;quot;/home/ubuntu/letsencrypt.sh/hook.rb&amp;quot;
+CONTACT_EMAIL=&amp;quot;your@email.com&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Edit domains.txt:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;main.domain.com sub1.main.domain.com sub2.main.domain.com sub3.main.domain.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then run the script to issue the certificate.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;./letsencrypt.sh -c -k /home/ubuntu/letsencrypt.sh/hook.rb
+cd /home/ubuntu/letsencrypt.sh/certs/main.domain.com/
+cat privkey.pem fullchain.pem &amp;gt; certificate.pem
+sudo cp /etc/haproxy/certificate.pem /etc/haproxy/certificate.pem.old
+sudo cp certificate.pem /etc/haproxy/certificate.pem
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now make sure you have certificate.pem and SSL configured haproxy.cfg in /etc/haproxy.cfg. You can add SSL support with:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;frontend marathon_https_in
+  bind *:443 ssl crt /etc/haproxy/certificate.pem
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then start your HAProxy container with Docker image:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker run -d -p 443:443 -p 80:80 --name haproxy -v /etc/haproxy:/etc/haproxy:ro -v /dev/log:/dev/log million12/haproxy
+#docker restart haproxy
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

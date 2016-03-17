@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://tuts.emrealadag.com/</loc>
-    <lastmod>2016-01-09T12:09:37+02:00</lastmod>
+    <lastmod>2016-03-17T18:30:37+02:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://tuts.emrealadag.com/post/letsencrypt-haproxy-with-dns-challenge/</loc>
+    <lastmod>2016-03-17T18:30:37+02:00</lastmod>
   </url>
   
   <url>
