@@ -15,11 +15,7 @@
       <pubDate>Thu, 17 Mar 2016 18:30:37 EET</pubDate>
       <author>Ahmet Emre Aladağ</author>
       <guid>http://tuts.emrealadag.com/post/letsencrypt-haproxy-with-dns-challenge/</guid>
-      <description>
-
-&lt;h1 id=&#34;letsencrypt-haproxy-with-dns-challenge:1d0e1bcd6c3f1c605fb6fb3ee4db89c2&#34;&gt;LetsEncrypt HAProxy with DNS challenge&lt;/h1&gt;
-
-&lt;p&gt;In this post, I will be showing you how to issue LetsEncrypt SSL certificate for your HAProxy running on Docker container. We will be using DNS challenge to verify we own the domains. hook.rb script will connect to Amazon Route 53 to update DNS records for this reason.&lt;/p&gt;
+      <description>&lt;p&gt;In this post, I will be showing you how to issue LetsEncrypt SSL certificate for your HAProxy running on Docker container. We will be using DNS challenge to verify we own the domains. hook.rb script will connect to Amazon Route 53 to update DNS records for this reason.&lt;/p&gt;
 
 &lt;p&gt;letsencrypt.sh will start the challenge and start hook.rb to update DNS records and then check if records are updated.&lt;/p&gt;
 
