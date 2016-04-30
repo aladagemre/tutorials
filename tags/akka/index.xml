@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Akka on Tutorials by Ahmet Emre Aladağ </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://tuts.emrealadag.com/tags/akka/</link>
+    <language>en-us</language>
+    <author>Ahmet Emre Aladağ</author>
+    
+    <updated>Sat, 30 Apr 2016 16:40:59 &#43;0200</updated>
+    
+    <item>
+      <title>Redirecting Akka Documentation URLs</title>
+      <link>http://tuts.emrealadag.com/post/redirecting-akka-documentation-url/</link>
+      <pubDate>Sat, 30 Apr 2016 16:40:59 &#43;0200</pubDate>
+      <author>Ahmet Emre Aladağ</author>
+      <guid>http://tuts.emrealadag.com/post/redirecting-akka-documentation-url/</guid>
+      <description>&lt;p&gt;When you search for Akka-related things on Google and you want to display a page on Akka Documentation, two problems might arise:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1) You are a Scala developer and the Google result is for Java.
+2) You are using version 2.4.2 but the page is for 2.3.13.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or maybe both. You would probably wish a plugin to redirect you to correct page automatically. For example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://doc.akka.io/docs/akka/2.3.13/java/actors.html
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;to&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://doc.akka.io/docs/akka/2.4.2/scala/actors.html
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can use &lt;a href=&#34;https://chrome.google.com/webstore/detail/redirector/pajiegeliagebegjdhebejdlknciafen/related&#34;&gt;this Chrome plugin&lt;/a&gt; to set regex URL redirections.&lt;/p&gt;
+
+&lt;p&gt;For Akka version 2.4.2 supporting Scala, add the following regex rules on the settings page of the plugin:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;From: ^http://doc.akka.io/docs/akka/(.*?)/(.*)/(.*)    
+To: http://doc.akka.io/docs/akka/2.4.2/scala/$3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There are similar plugins for Safari but I could see none with regex support.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
