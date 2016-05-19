@@ -19,9 +19,11 @@
 
 &lt;h2 id=&#34;summary:33a48a73c2fdf017c5c8854f56540a3e&#34;&gt;Summary&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;You want to:&lt;/strong&gt; See your PC/laptop screen from your mobile phone
-&lt;strong&gt;But:&lt;/strong&gt; Your Internet connection is inconsistent and your mobile connection is limited.
-&lt;strong&gt;Solution::&lt;/strong&gt; Connect to your PC/laptop over Ad-Hoc Network&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;You want to:&lt;/strong&gt; See your PC/laptop screen from your mobile phone&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;But:&lt;/strong&gt; Your Internet connection is inconsistent and your mobile connection is limited.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Solution:&lt;/strong&gt; Connect to your PC/laptop over Ad-Hoc Network&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&#34;requirements:33a48a73c2fdf017c5c8854f56540a3e&#34;&gt;Requirements&lt;/h2&gt;
 
