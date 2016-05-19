@@ -10,9 +10,9 @@ keywords = "remote, desktop, connection, lan, mobile, ad-hoc, android, phone, 3g
 
 ## Summary
 
-**You want to:** See your PC/laptop screen from your mobile phone
-**But:** Your Internet connection is inconsistent and your mobile connection is limited.
-**Solution::** Connect to your PC/laptop over Ad-Hoc Network
+* **You want to:** See your PC/laptop screen from your mobile phone
+* **But:** Your Internet connection is inconsistent and your mobile connection is limited.
+* **Solution:** Connect to your PC/laptop over Ad-Hoc Network
 
 ## Requirements
 
