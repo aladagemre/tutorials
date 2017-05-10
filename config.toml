@@ -34,8 +34,8 @@ instagram_user = "aladag.emre"
 
 facebook_like = true
 twitter_tweet_button = true
-google_plus_one = "true"
-
+google_plus_one = true
+addthis_profile_id="ra-4fc9c14e119a3456"
 
 # follow links
 twitter_follow = true

@@ -14,6 +14,6 @@
 	{{ end }}
 	</div>
 	{{ if or $.Site.Params.facebook_like (or $.Site.Params.twitter_tweet_button (or $.Site.Params.google_plus_one $.Site.Params.addthis_profile_id)) }}
-  	<script type="text/javascript" src='http://s7.addthis.com/js/250/addthis_widget.js#pubid={{ $.Site.Params.addthis_profile_id }}'></script>
+  	<script type="text/javascript" src='//s7.addthis.com/js/300/addthis_widget.js#pubid={{ $.Site.Params.addthis_profile_id }}'></script>
   	{{ end }}
 </div>
