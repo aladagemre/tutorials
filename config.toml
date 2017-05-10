@@ -43,3 +43,4 @@ twitter_follow = true
 disqus_short_name = "emrealadag"
 disqus_show_comment_count = false
 google_analytics_tracking_id = "UA-2553826-1"
+google_analytics_domain = "tuts.emrealadag.com"
