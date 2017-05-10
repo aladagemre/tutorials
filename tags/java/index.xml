@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Java on Tutorials by Ahmet Emre Aladağ </title>
+      <title> on Tutorials by Ahmet Emre Aladağ </title>
       <generator uri="https://gohugo.io">Hugo</generator>
-    <link>http://tuts.emrealadag.com/tags/java/</link>
+    <link>http://tuts.emrealadag.com/tags/java/index.xml</link>
     <language>en-us</language>
     <author>Ahmet Emre Aladağ</author>
     
-    <updated>Sat, 30 Apr 2016 16:40:59 &#43;0200</updated>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
     
     <item>
       <title>Redirecting Akka Documentation URLs</title>

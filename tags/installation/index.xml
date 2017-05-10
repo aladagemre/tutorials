@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Installation on Tutorials by Ahmet Emre Aladağ </title>
+      <title> on Tutorials by Ahmet Emre Aladağ </title>
       <generator uri="https://gohugo.io">Hugo</generator>
-    <link>http://tuts.emrealadag.com/tags/installation/</link>
+    <link>http://tuts.emrealadag.com/tags/installation/index.xml</link>
     <language>en-us</language>
     <author>Ahmet Emre Aladağ</author>
     
-    <updated>Mon, 23 Nov 2015 16:14:21 EET</updated>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
     
     <item>
       <title>Running RStudio on Remote Server</title>
       <link>http://tuts.emrealadag.com/post/running-rstudio-on-remote-server/</link>
-      <pubDate>Mon, 23 Nov 2015 16:14:21 EET</pubDate>
+      <pubDate>Mon, 23 Nov 2015 16:14:21 &#43;0200</pubDate>
       <author>Ahmet Emre Aladağ</author>
       <guid>http://tuts.emrealadag.com/post/running-rstudio-on-remote-server/</guid>
       <description>&lt;p&gt;In this tutorial, we are going to build a Remote R Server. Following this tutorial, you will be able to run your R codes on a remote server so that it runs more efficiently or it doesn&amp;rsquo;t heat up your laptop. You can read the &lt;a href=&#34;https://support.rstudio.com/hc/en-us/articles/200552306-Getting-Started&#34;&gt;detailed benefits&lt;/a&gt;. You can use any remote server for this purpose. You can use AWS, DigitalOcean, Scaleway.&lt;/p&gt;
@@ -81,18 +81,18 @@ $ libmysqlclient-dev
     <item>
       <title>Installing Standalone Spark Cluster</title>
       <link>http://tuts.emrealadag.com/post/installing-standalone-spark-cluster/</link>
-      <pubDate>Mon, 26 Oct 2015 16:09:37 EET</pubDate>
+      <pubDate>Mon, 26 Oct 2015 16:09:37 &#43;0200</pubDate>
       <author>Ahmet Emre Aladağ</author>
       <guid>http://tuts.emrealadag.com/post/installing-standalone-spark-cluster/</guid>
       <description>
 
-&lt;h1 id=&#34;installing-spark-in-standalone-mode:55f44a8afacb8e5eb85361a9acfcba6d&#34;&gt;Installing Spark in Standalone Mode&lt;/h1&gt;
+&lt;h1 id=&#34;installing-spark-in-standalone-mode&#34;&gt;Installing Spark in Standalone Mode&lt;/h1&gt;
 
 &lt;p&gt;You can install and run Spark without needing to install YARN or Hadoop. Make sure your system has Java JDK installed. Just download the latest binary Spark with Hadoop version and extract it.&lt;/p&gt;
 
 &lt;p&gt;For demo, let us assume our master server IP is 123.456.789.123.&lt;/p&gt;
 
-&lt;h2 id=&#34;running-the-master-service:55f44a8afacb8e5eb85361a9acfcba6d&#34;&gt;Running the master service&lt;/h2&gt;
+&lt;h2 id=&#34;running-the-master-service&#34;&gt;Running the master service&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Give the following commands:&lt;/li&gt;
@@ -107,7 +107,7 @@ export MASTER=spark://${SPARK_MASTER_IP}:7077
 &lt;li&gt;This will start the master and let it listen everybody (out of the network). It will use as much as memory and CPU it can. Now locate to the &lt;a href=&#34;http://123.456.789.123:8080&#34;&gt;http://123.456.789.123:8080&lt;/a&gt; port and see the control panel of the master service.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;running-the-slave-service:55f44a8afacb8e5eb85361a9acfcba6d&#34;&gt;Running the slave service&lt;/h2&gt;
+&lt;h2 id=&#34;running-the-slave-service&#34;&gt;Running the slave service&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;After installing the master, you can run a slave node (either on the same machine or another machine) with:&lt;/li&gt;
@@ -125,7 +125,7 @@ export MASTER=spark://${SPARK_MASTER_IP}:7077
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mkdir /home/user/jars
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;submitting-a-job-to-the-spark-master:55f44a8afacb8e5eb85361a9acfcba6d&#34;&gt;Submitting a job to the Spark master&lt;/h2&gt;
+&lt;h2 id=&#34;submitting-a-job-to-the-spark-master&#34;&gt;Submitting a job to the Spark master&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Install &lt;a href=&#34;https://github.com/sbt/sbt-assembly&#34;&gt;sbt-assembly&lt;/a&gt; and in the project folder package the project with:&lt;/li&gt;

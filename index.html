@@ -3,6 +3,7 @@
 <html lang="en-us">
 
 <head>
+	<meta name="generator" content="Hugo 0.17" />
 	<meta charset="utf-8">
 	<title>Tutorials by Ahmet Emre Aladağ</title>
 	<meta name="author" content="map[name:Ahmet Emre Aladağ email:aladagemre@gmail.com website:http://www.emrealadag.com]">
@@ -31,6 +32,7 @@
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-2553826-1']);
+		_gaq.push(['_setDomainName', 'tuts.emrealadag.com']);
 		_gaq.push(['_trackPageview']);
 
 		(function() {
@@ -152,7 +154,7 @@
 	</div>
 	<h1 class="title" itemprop="name"><a href="http://tuts.emrealadag.com/post/remote-desktop-connection-on-adhoc-lan/" itemprop="url">Remote Desktop Connection on Ad-Hoc LAN</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		Summary You want to: See your PC/laptop screen from your mobile phone But: Your Internet connection is inconsistent and your mobile connection is limited. Solution: Connect to your PC/laptop over Ad-Hoc Network Requirements You have Android mobile phone with mobile Internet access (3G) even for a few seconds You have WiFi access on your PC/laptop Instructions Install Teamviewer on your PC and Teamviewer Remote Control on your Android phone. Setup AdHoc Network from your Android Phone: &ldquo;Use this phone as an access point&rdquo; (see top bar or settings menu) Turn on mobile Internet (3G).
+		Summary  You want to: See your PC/laptop screen from your mobile phone But: Your Internet connection is inconsistent and your mobile connection is limited. Solution: Connect to your PC/laptop over Ad-Hoc Network  Requirements  You have Android mobile phone with mobile Internet access (3G) even for a few seconds You have WiFi access on your PC/laptop  Instructions  Install Teamviewer on your PC and Teamviewer Remote Control on your Android phone.
 		<a href="http://tuts.emrealadag.com/post/remote-desktop-connection-on-adhoc-lan/" class="more-link">Read on →</a>
 	</div>
 </article>
@@ -186,7 +188,10 @@
 	</div>
 	<h1 class="title" itemprop="name"><a href="http://tuts.emrealadag.com/post/redirecting-akka-documentation-url/" itemprop="url">Redirecting Akka Documentation URLs</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		When you search for Akka-related things on Google and you want to display a page on Akka Documentation, two problems might arise: 1) You are a Scala developer and the Google result is for Java. 2) You are using version 2.4.2 but the page is for 2.3.13. or maybe both. You would probably wish a plugin to redirect you to correct page automatically. For example: http://doc.akka.io/docs/akka/2.3.13/java/actors.html to http://doc.akka.io/docs/akka/2.4.2/scala/actors.html You can use this Chrome plugin to set regex URL redirections.
+		When you search for Akka-related things on Google and you want to display a page on Akka Documentation, two problems might arise:
+1) You are a Scala developer and the Google result is for Java. 2) You are using version 2.4.2 but the page is for 2.3.13.  or maybe both. You would probably wish a plugin to redirect you to correct page automatically. For example:
+http://doc.akka.io/docs/akka/2.3.13/java/actors.html  to
+http://doc.akka.io/docs/akka/2.4.2/scala/actors.html  You can use this Chrome plugin to set regex URL redirections.
 		<a href="http://tuts.emrealadag.com/post/redirecting-akka-documentation-url/" class="more-link">Read on →</a>
 	</div>
 </article>
@@ -225,7 +230,9 @@
 	</div>
 	<h1 class="title" itemprop="name"><a href="http://tuts.emrealadag.com/post/letsencrypt-haproxy-with-dns-challenge/" itemprop="url">LetsEncrypt HAProxy with DNS challenge</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		In this post, I will be showing you how to issue LetsEncrypt SSL certificate for your HAProxy running on Docker container. We will be using DNS challenge to verify we own the domains. hook.rb script will connect to Amazon Route 53 to update DNS records for this reason. letsencrypt.sh will start the challenge and start hook.rb to update DNS records and then check if records are updated. git clone https://github.com/lukas2511/letsencrypt.sh cd letsencrypt.sh cp domains.txt.example domains.txt cp config.sh.example config.sh wget https://gist.githubusercontent.com/tache/3b6760784c098c9139c6/raw/33fe6e0791a7d40ce7cdf14019b7d31801d4ab05/hook.rb sudo apt-get install ruby sudo gem install aws-sdk pry awesome_print domainatrix Then set your environment variables that can modify Amazon Route 53: export AWS_ACCESS_KEY_ID=&quot;xx&quot; export AWS_SECRET_ACCESS_KEY=&quot;xx&quot; Edit config.sh and set the following: CHALLENGETYPE=&quot;dns-01&quot; HOOK=&quot;/home/ubuntu/letsencrypt.sh/hook.rb&quot; CONTACT_EMAIL=&quot;your@email.com&quot; Edit domains.txt: main.domain.com sub1.main.domain.com sub2.main.domain.com sub3.main.domain.com Then run the script to issue the certificate.
+		In this post, I will be showing you how to issue LetsEncrypt SSL certificate for your HAProxy running on Docker container. We will be using DNS challenge to verify we own the domains. hook.rb script will connect to Amazon Route 53 to update DNS records for this reason.
+letsencrypt.sh will start the challenge and start hook.rb to update DNS records and then check if records are updated.
+git clone https://github.com/lukas2511/letsencrypt.sh cd letsencrypt.
 		<a href="http://tuts.emrealadag.com/post/letsencrypt-haproxy-with-dns-challenge/" class="more-link">Read on →</a>
 	</div>
 </article>
@@ -259,7 +266,8 @@
 	</div>
 	<h1 class="title" itemprop="name"><a href="http://tuts.emrealadag.com/post/cloudfront-cdn-for-s3-static-web-hosting/" itemprop="url">Cloudfront CDN for Amazon S3 Static Web Hosting</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		In this post, I will be guiding you how to setup an Amazon S3 bucket as a static website, then configure CloudFront CDN to serve in front of Amazon S3. Outline is as following: Create a S3 Bucket Configure Amazon S3 to serve as a static website Create Cloudfront distribution. Set Route53 records Restrict S3 access to Cloudfront Amazon S3 Create an S3 bucket and then follow Amazon S3 bucket properties -&gt; Permissions -&gt; Edit bucket policy and paste the following text.
+		In this post, I will be guiding you how to setup an Amazon S3 bucket as a static website, then configure CloudFront CDN to serve in front of Amazon S3. Outline is as following:
+ Create a S3 Bucket Configure Amazon S3 to serve as a static website Create Cloudfront distribution. Set Route53 records Restrict S3 access to Cloudfront  Amazon S3 Create an S3 bucket and then follow Amazon S3 bucket properties -&gt; Permissions -&gt; Edit bucket policy and paste the following text.
 		<a href="http://tuts.emrealadag.com/post/cloudfront-cdn-for-s3-static-web-hosting/" class="more-link">Read on →</a>
 	</div>
 </article>
@@ -288,7 +296,8 @@
 	</div>
 	<h1 class="title" itemprop="name"><a href="http://tuts.emrealadag.com/post/ubuntu-service-for-flask-server/" itemprop="url">Creating Ubuntu Service for Flask server</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		Let&rsquo;s say you have a flask app and you want to create an Ubuntu service for this app. This way, the service will restart whenever the server restarts or the service fails. Here is a sample flask app on /home/user/server.py: #!/usr/bin/python from flask import Flask, request app = Flask(__name__) @app.route('/', methods=['GET']) def index(): return &quot;Hello world&quot; if __name__ == '__main__': app.run(host=&quot;0.0.0.0&quot;, port=31013) We have to write the following service configuration in /etc/init/flask.conf: description &quot;flask&quot; start on stopped rc RUNLEVEL=[2345] respawn exec python /home/user/server.py Try sudo service flask start.
+		Let&rsquo;s say you have a flask app and you want to create an Ubuntu service for this app. This way, the service will restart whenever the server restarts or the service fails. Here is a sample flask app on /home/user/server.py:
+#!/usr/bin/python from flask import Flask, request app = Flask(__name__) @app.route('/', methods=['GET']) def index(): return &quot;Hello world&quot; if __name__ == '__main__': app.run(host=&quot;0.0.0.0&quot;, port=31013)  We have to write the following service configuration in /etc/init/flask.
 		<a href="http://tuts.emrealadag.com/post/ubuntu-service-for-flask-server/" class="more-link">Read on →</a>
 	</div>
 </article>
@@ -317,7 +326,8 @@
 	</div>
 	<h1 class="title" itemprop="name"><a href="http://tuts.emrealadag.com/post/running-rstudio-on-remote-server/" itemprop="url">Running RStudio on Remote Server</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		In this tutorial, we are going to build a Remote R Server. Following this tutorial, you will be able to run your R codes on a remote server so that it runs more efficiently or it doesn&rsquo;t heat up your laptop. You can read the detailed benefits. You can use any remote server for this purpose. You can use AWS, DigitalOcean, Scaleway. Warning: Scaleway has currently ARM processors thus require compilation from source code.
+		In this tutorial, we are going to build a Remote R Server. Following this tutorial, you will be able to run your R codes on a remote server so that it runs more efficiently or it doesn&rsquo;t heat up your laptop. You can read the detailed benefits. You can use any remote server for this purpose. You can use AWS, DigitalOcean, Scaleway.
+Warning: Scaleway has currently ARM processors thus require compilation from source code.
 		<a href="http://tuts.emrealadag.com/post/running-rstudio-on-remote-server/" class="more-link">Read on →</a>
 	</div>
 </article>
@@ -346,7 +356,9 @@
 	</div>
 	<h1 class="title" itemprop="name"><a href="http://tuts.emrealadag.com/post/installing-standalone-spark-cluster/" itemprop="url">Installing Standalone Spark Cluster</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		Installing Spark in Standalone Mode You can install and run Spark without needing to install YARN or Hadoop. Make sure your system has Java JDK installed. Just download the latest binary Spark with Hadoop version and extract it. For demo, let us assume our master server IP is 123.456.789.123. Running the master service Give the following commands: export SPARK_MASTER_IP=123.456.789.123 export MASTER=spark://${SPARK_MASTER_IP}:7077 ./sbin/start-master.sh -h 0.0.0.0 This will start the master and let it listen everybody (out of the network).
+		Installing Spark in Standalone Mode You can install and run Spark without needing to install YARN or Hadoop. Make sure your system has Java JDK installed. Just download the latest binary Spark with Hadoop version and extract it.
+For demo, let us assume our master server IP is 123.456.789.123.
+Running the master service  Give the following commands:  export SPARK_MASTER_IP=123.456.789.123 export MASTER=spark://${SPARK_MASTER_IP}:7077 ./sbin/start-master.sh -h 0.0.0.0   This will start the master and let it listen everybody (out of the network).
 		<a href="http://tuts.emrealadag.com/post/installing-standalone-spark-cluster/" class="more-link">Read on →</a>
 	</div>
 </article>
@@ -380,7 +392,8 @@
 	</div>
 	<h1 class="title" itemprop="name"><a href="http://tuts.emrealadag.com/post/running-play-apps-via-docker/" itemprop="url">Running Play Apps via Docker</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		In this tutorial, I will guide you running your Play framework application (named MyProject in our tutorial) via Docker. I assume you have created a Play project with a build.sbt (or equivalent) file and make sure it&rsquo;s running on port 9000 with sbt run command. Our demo project pulls tweets from Twitter of a specified person so it requires environment variables CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET to be set before running. Docker Installation Make sure you have installed the latest version of Docker Toolbox.
+		In this tutorial, I will guide you running your Play framework application (named MyProject in our tutorial) via Docker. I assume you have created a Play project with a build.sbt (or equivalent) file and make sure it&rsquo;s running on port 9000 with sbt run command.
+Our demo project pulls tweets from Twitter of a specified person so it requires environment variables CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET to be set before running.
 		<a href="http://tuts.emrealadag.com/post/running-play-apps-via-docker/" class="more-link">Read on →</a>
 	</div>
 </article>
@@ -394,7 +407,7 @@
 					</nav>
 				</div>
 			</div>
-			<footer id="footer" class="inner">Copyright &copy; 2016
+			<footer id="footer" class="inner">Copyright &copy; 2017
 
     Ahmet Emre Aladağ
 

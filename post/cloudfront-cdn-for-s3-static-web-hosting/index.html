@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Cloudfront CDN for Amazon S3 Static Web Hosting - Tutorials by Ahmet Emre Aladağ</title>
-	<meta name="author" content="map[name:Ahmet Emre Aladağ email:aladagemre@gmail.com website:http://www.emrealadag.com]">
+	<meta name="author" content="map[website:http://www.emrealadag.com name:Ahmet Emre Aladağ email:aladagemre@gmail.com]">
 
 	
 	  
@@ -31,6 +31,7 @@
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-2553826-1']);
+		_gaq.push(['_setDomainName', 'tuts.emrealadag.com']);
 		_gaq.push(['_trackPageview']);
 
 		(function() {
@@ -137,7 +138,7 @@
 <li>Restrict S3 access to Cloudfront</li>
 </ul>
 
-<h2 id="amazon-s3:002aebe340d456bc11a63f3385f2d580">Amazon S3</h2>
+<h2 id="amazon-s3">Amazon S3</h2>
 
 <p>Create an S3 bucket and then follow <strong>Amazon S3 bucket properties</strong> -&gt; <strong>Permissions</strong> -&gt; <strong>Edit bucket policy</strong> and paste the following text.</p>
 
@@ -157,7 +158,7 @@
 
 <p>Amazon S3 bucket properties -&gt; Static Web Hosting, choose <strong>Enable website hosting</strong> and provide Index Document as <em>index.html</em>. You will see the site url there: <em>www.mysite.com.s3-website-eu-west-1.amazonaws.com</em>. Now upload some file and check if your site is working.</p>
 
-<h2 id="cloudfront:002aebe340d456bc11a63f3385f2d580">Cloudfront</h2>
+<h2 id="cloudfront">Cloudfront</h2>
 
 <p>Navigate to CloudFront. Click on <a href="https://console.aws.amazon.com/cloudfront/home?region=us-east-1#create-distribution:">Create Distribution</a> button. Choose <strong>Get Started</strong> below <strong>Web</strong>.</p>
 
@@ -180,7 +181,7 @@ mysite.com
 
 <p>Then press <strong>Create Distribution</strong>. In the distributon list, you will see Domain Name column. We will use the domain name written here (<em>abcdefghi.cloudfront.net</em>) on Route53. It may take some time to see the system has been fully deployed.</p>
 
-<h2 id="route53:002aebe340d456bc11a63f3385f2d580">Route53</h2>
+<h2 id="route53">Route53</h2>
 
 <p>Add <em>A record</em> for your Hosted Zone.</p>
 
@@ -202,15 +203,15 @@ mysite.com
 
 <p>If it works, create a similar A Record for www.mysite.com and mysite.com</p>
 
-<h2 id="going-back-to-s3:002aebe340d456bc11a63f3385f2d580">Going Back to S3</h2>
+<h2 id="going-back-to-s3">Going Back to S3</h2>
 
 <p>If you wish to stop using Cloudfront and go back to S3 serving, update www.mysite.com A record alias. Delete the URL written there, then a list will appear. Choose your S3 bucket (www.mysite.com) and <strong>Save Record Set</strong>.</p>
 
-<h2 id="restricting-s3-access-to-cloudfront:002aebe340d456bc11a63f3385f2d580">Restricting S3 access to Cloudfront</h2>
+<h2 id="restricting-s3-access-to-cloudfront">Restricting S3 access to Cloudfront</h2>
 
 <p>You may want to allow only CloudFront to access your S3 Bucket so that DDoS attackers can&rsquo;t attack on your S3 bucket&rsquo;s web endpoint, causing you thousands of dollars.</p>
 
-<h3 id="cloudfront-1:002aebe340d456bc11a63f3385f2d580">Cloudfront</h3>
+<h3 id="cloudfront-1">Cloudfront</h3>
 
 <p>Click on your distribution, navigate to <strong>Origins</strong> tab, choose origin in the list and press <strong>Edit</strong>. Add a new header on <strong>Origin Custom Headers</strong>.</p>
 
@@ -221,7 +222,7 @@ mysite.com
 
 <p>Now Amazon Cloudfront will add <em>User-Agent: abcdefghi123</em> on each request it is forwarding to Amazon S3.</p>
 
-<h3 id="amazon-s3-1:002aebe340d456bc11a63f3385f2d580">Amazon S3</h3>
+<h3 id="amazon-s3-1">Amazon S3</h3>
 
 <p>On S3 permissions, click Bucket Policy Editor and fill is as the following. This will limit the resources to AWS network and allow only requests from User Agent &ldquo;abcdefghi123&rdquo;. Only the ones who provide this password through User-Agent will be able to access the bucket.</p>
 
@@ -303,7 +304,7 @@ mysite.com
 				    </div>
 				</div>
 			</div>
-			<footer id="footer" class="inner">Copyright &copy; 2016
+			<footer id="footer" class="inner">Copyright &copy; 2017
 
     Ahmet Emre Aladağ
 

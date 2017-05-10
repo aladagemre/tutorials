@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Python on Tutorials by Ahmet Emre Aladağ </title>
+      <title> on Tutorials by Ahmet Emre Aladağ </title>
       <generator uri="https://gohugo.io">Hugo</generator>
-    <link>http://tuts.emrealadag.com/tags/python/</link>
+    <link>http://tuts.emrealadag.com/tags/python/index.xml</link>
     <language>en-us</language>
     <author>Ahmet Emre Aladağ</author>
     
-    <updated>Sun, 27 Dec 2015 19:09:21 EET</updated>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
     
     <item>
       <title>Creating Ubuntu Service for Flask server</title>
       <link>http://tuts.emrealadag.com/post/ubuntu-service-for-flask-server/</link>
-      <pubDate>Sun, 27 Dec 2015 19:09:21 EET</pubDate>
+      <pubDate>Sun, 27 Dec 2015 19:09:21 &#43;0200</pubDate>
       <author>Ahmet Emre Aladağ</author>
       <guid>http://tuts.emrealadag.com/post/ubuntu-service-for-flask-server/</guid>
       <description>&lt;p&gt;Let&amp;rsquo;s say you have a flask app and you want to create an Ubuntu service for this app. This way, the service will restart whenever the server restarts or the service fails. Here is a sample flask app on &lt;strong&gt;/home/user/server.py&lt;/strong&gt;:&lt;/p&gt;

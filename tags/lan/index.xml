@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Lan on Tutorials by Ahmet Emre Aladağ </title>
+      <title> on Tutorials by Ahmet Emre Aladağ </title>
       <generator uri="https://gohugo.io">Hugo</generator>
-    <link>http://tuts.emrealadag.com/tags/lan/</link>
+    <link>http://tuts.emrealadag.com/tags/lan/index.xml</link>
     <language>en-us</language>
     <author>Ahmet Emre Aladağ</author>
     
-    <updated>Thu, 19 May 2016 13:40:59 &#43;0200</updated>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
     
     <item>
       <title>Remote Desktop Connection on Ad-Hoc LAN</title>
@@ -17,7 +17,7 @@
       <guid>http://tuts.emrealadag.com/post/remote-desktop-connection-on-adhoc-lan/</guid>
       <description>
 
-&lt;h2 id=&#34;summary:33a48a73c2fdf017c5c8854f56540a3e&#34;&gt;Summary&lt;/h2&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;You want to:&lt;/strong&gt; See your PC/laptop screen from your mobile phone&lt;/li&gt;
@@ -25,14 +25,14 @@
 &lt;li&gt;&lt;strong&gt;Solution:&lt;/strong&gt; Connect to your PC/laptop over Ad-Hoc Network&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;requirements:33a48a73c2fdf017c5c8854f56540a3e&#34;&gt;Requirements&lt;/h2&gt;
+&lt;h2 id=&#34;requirements&#34;&gt;Requirements&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;You have Android mobile phone with mobile Internet access (3G) even for a few seconds&lt;/li&gt;
 &lt;li&gt;You have WiFi access on your PC/laptop&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;instructions:33a48a73c2fdf017c5c8854f56540a3e&#34;&gt;Instructions&lt;/h2&gt;
+&lt;h2 id=&#34;instructions&#34;&gt;Instructions&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Install Teamviewer on your PC and Teamviewer Remote Control on your Android phone.&lt;/li&gt;

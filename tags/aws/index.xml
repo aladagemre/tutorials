@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Aws on Tutorials by Ahmet Emre Aladağ </title>
+      <title> on Tutorials by Ahmet Emre Aladağ </title>
       <generator uri="https://gohugo.io">Hugo</generator>
-    <link>http://tuts.emrealadag.com/tags/aws/</link>
+    <link>http://tuts.emrealadag.com/tags/aws/index.xml</link>
     <language>en-us</language>
     <author>Ahmet Emre Aladağ</author>
     
-    <updated>Thu, 17 Mar 2016 18:30:37 EET</updated>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
     
     <item>
       <title>LetsEncrypt HAProxy with DNS challenge</title>
       <link>http://tuts.emrealadag.com/post/letsencrypt-haproxy-with-dns-challenge/</link>
-      <pubDate>Thu, 17 Mar 2016 18:30:37 EET</pubDate>
+      <pubDate>Thu, 17 Mar 2016 18:30:37 &#43;0200</pubDate>
       <author>Ahmet Emre Aladağ</author>
       <guid>http://tuts.emrealadag.com/post/letsencrypt-haproxy-with-dns-challenge/</guid>
       <description>&lt;p&gt;In this post, I will be showing you how to issue LetsEncrypt SSL certificate for your HAProxy running on Docker container. We will be using DNS challenge to verify we own the domains. hook.rb script will connect to Amazon Route 53 to update DNS records for this reason.&lt;/p&gt;
@@ -73,7 +73,7 @@ sudo cp certificate.pem /etc/haproxy/certificate.pem
     <item>
       <title>Cloudfront CDN for Amazon S3 Static Web Hosting</title>
       <link>http://tuts.emrealadag.com/post/cloudfront-cdn-for-s3-static-web-hosting/</link>
-      <pubDate>Sat, 09 Jan 2016 12:09:37 EET</pubDate>
+      <pubDate>Sat, 09 Jan 2016 12:09:37 &#43;0200</pubDate>
       <author>Ahmet Emre Aladağ</author>
       <guid>http://tuts.emrealadag.com/post/cloudfront-cdn-for-s3-static-web-hosting/</guid>
       <description>
@@ -88,7 +88,7 @@ sudo cp certificate.pem /etc/haproxy/certificate.pem
 &lt;li&gt;Restrict S3 access to Cloudfront&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;amazon-s3:002aebe340d456bc11a63f3385f2d580&#34;&gt;Amazon S3&lt;/h2&gt;
+&lt;h2 id=&#34;amazon-s3&#34;&gt;Amazon S3&lt;/h2&gt;
 
 &lt;p&gt;Create an S3 bucket and then follow &lt;strong&gt;Amazon S3 bucket properties&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Permissions&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Edit bucket policy&lt;/strong&gt; and paste the following text.&lt;/p&gt;
 
@@ -108,7 +108,7 @@ sudo cp certificate.pem /etc/haproxy/certificate.pem
 
 &lt;p&gt;Amazon S3 bucket properties -&amp;gt; Static Web Hosting, choose &lt;strong&gt;Enable website hosting&lt;/strong&gt; and provide Index Document as &lt;em&gt;index.html&lt;/em&gt;. You will see the site url there: &lt;em&gt;www.mysite.com.s3-website-eu-west-1.amazonaws.com&lt;/em&gt;. Now upload some file and check if your site is working.&lt;/p&gt;
 
-&lt;h2 id=&#34;cloudfront:002aebe340d456bc11a63f3385f2d580&#34;&gt;Cloudfront&lt;/h2&gt;
+&lt;h2 id=&#34;cloudfront&#34;&gt;Cloudfront&lt;/h2&gt;
 
 &lt;p&gt;Navigate to CloudFront. Click on &lt;a href=&#34;https://console.aws.amazon.com/cloudfront/home?region=us-east-1#create-distribution:&#34;&gt;Create Distribution&lt;/a&gt; button. Choose &lt;strong&gt;Get Started&lt;/strong&gt; below &lt;strong&gt;Web&lt;/strong&gt;.&lt;/p&gt;
 
@@ -131,7 +131,7 @@ mysite.com
 
 &lt;p&gt;Then press &lt;strong&gt;Create Distribution&lt;/strong&gt;. In the distributon list, you will see Domain Name column. We will use the domain name written here (&lt;em&gt;abcdefghi.cloudfront.net&lt;/em&gt;) on Route53. It may take some time to see the system has been fully deployed.&lt;/p&gt;
 
-&lt;h2 id=&#34;route53:002aebe340d456bc11a63f3385f2d580&#34;&gt;Route53&lt;/h2&gt;
+&lt;h2 id=&#34;route53&#34;&gt;Route53&lt;/h2&gt;
 
 &lt;p&gt;Add &lt;em&gt;A record&lt;/em&gt; for your Hosted Zone.&lt;/p&gt;
 
@@ -153,15 +153,15 @@ mysite.com
 
 &lt;p&gt;If it works, create a similar A Record for www.mysite.com and mysite.com&lt;/p&gt;
 
-&lt;h2 id=&#34;going-back-to-s3:002aebe340d456bc11a63f3385f2d580&#34;&gt;Going Back to S3&lt;/h2&gt;
+&lt;h2 id=&#34;going-back-to-s3&#34;&gt;Going Back to S3&lt;/h2&gt;
 
 &lt;p&gt;If you wish to stop using Cloudfront and go back to S3 serving, update www.mysite.com A record alias. Delete the URL written there, then a list will appear. Choose your S3 bucket (www.mysite.com) and &lt;strong&gt;Save Record Set&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;restricting-s3-access-to-cloudfront:002aebe340d456bc11a63f3385f2d580&#34;&gt;Restricting S3 access to Cloudfront&lt;/h2&gt;
+&lt;h2 id=&#34;restricting-s3-access-to-cloudfront&#34;&gt;Restricting S3 access to Cloudfront&lt;/h2&gt;
 
 &lt;p&gt;You may want to allow only CloudFront to access your S3 Bucket so that DDoS attackers can&amp;rsquo;t attack on your S3 bucket&amp;rsquo;s web endpoint, causing you thousands of dollars.&lt;/p&gt;
 
-&lt;h3 id=&#34;cloudfront-1:002aebe340d456bc11a63f3385f2d580&#34;&gt;Cloudfront&lt;/h3&gt;
+&lt;h3 id=&#34;cloudfront-1&#34;&gt;Cloudfront&lt;/h3&gt;
 
 &lt;p&gt;Click on your distribution, navigate to &lt;strong&gt;Origins&lt;/strong&gt; tab, choose origin in the list and press &lt;strong&gt;Edit&lt;/strong&gt;. Add a new header on &lt;strong&gt;Origin Custom Headers&lt;/strong&gt;.&lt;/p&gt;
 
@@ -172,7 +172,7 @@ mysite.com
 
 &lt;p&gt;Now Amazon Cloudfront will add &lt;em&gt;User-Agent: abcdefghi123&lt;/em&gt; on each request it is forwarding to Amazon S3.&lt;/p&gt;
 
-&lt;h3 id=&#34;amazon-s3-1:002aebe340d456bc11a63f3385f2d580&#34;&gt;Amazon S3&lt;/h3&gt;
+&lt;h3 id=&#34;amazon-s3-1&#34;&gt;Amazon S3&lt;/h3&gt;
 
 &lt;p&gt;On S3 permissions, click Bucket Policy Editor and fill is as the following. This will limit the resources to AWS network and allow only requests from User Agent &amp;ldquo;abcdefghi123&amp;rdquo;. Only the ones who provide this password through User-Agent will be able to access the bucket.&lt;/p&gt;
 

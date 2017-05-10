@@ -31,6 +31,7 @@
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-2553826-1']);
+		_gaq.push(['_setDomainName', 'tuts.emrealadag.com']);
 		_gaq.push(['_trackPageview']);
 
 		(function() {
@@ -127,13 +128,13 @@
 	<div class="entry-content" itemprop="articleBody">
         
 
-<h1 id="installing-spark-in-standalone-mode:55f44a8afacb8e5eb85361a9acfcba6d">Installing Spark in Standalone Mode</h1>
+<h1 id="installing-spark-in-standalone-mode">Installing Spark in Standalone Mode</h1>
 
 <p>You can install and run Spark without needing to install YARN or Hadoop. Make sure your system has Java JDK installed. Just download the latest binary Spark with Hadoop version and extract it.</p>
 
 <p>For demo, let us assume our master server IP is 123.456.789.123.</p>
 
-<h2 id="running-the-master-service:55f44a8afacb8e5eb85361a9acfcba6d">Running the master service</h2>
+<h2 id="running-the-master-service">Running the master service</h2>
 
 <ul>
 <li>Give the following commands:</li>
@@ -148,7 +149,7 @@ export MASTER=spark://${SPARK_MASTER_IP}:7077
 <li>This will start the master and let it listen everybody (out of the network). It will use as much as memory and CPU it can. Now locate to the <a href="http://123.456.789.123:8080">http://123.456.789.123:8080</a> port and see the control panel of the master service.</li>
 </ul>
 
-<h2 id="running-the-slave-service:55f44a8afacb8e5eb85361a9acfcba6d">Running the slave service</h2>
+<h2 id="running-the-slave-service">Running the slave service</h2>
 
 <ul>
 <li>After installing the master, you can run a slave node (either on the same machine or another machine) with:</li>
@@ -166,7 +167,7 @@ export MASTER=spark://${SPARK_MASTER_IP}:7077
 <pre><code class="language-bash">mkdir /home/user/jars
 </code></pre>
 
-<h2 id="submitting-a-job-to-the-spark-master:55f44a8afacb8e5eb85361a9acfcba6d">Submitting a job to the Spark master</h2>
+<h2 id="submitting-a-job-to-the-spark-master">Submitting a job to the Spark master</h2>
 
 <ul>
 <li>Install <a href="https://github.com/sbt/sbt-assembly">sbt-assembly</a> and in the project folder package the project with:</li>
@@ -246,7 +247,7 @@ export MASTER=spark://${SPARK_MASTER_IP}:7077
 				    </div>
 				</div>
 			</div>
-			<footer id="footer" class="inner">Copyright &copy; 2016
+			<footer id="footer" class="inner">Copyright &copy; 2017
 
     Ahmet Emre Aladağ
 
