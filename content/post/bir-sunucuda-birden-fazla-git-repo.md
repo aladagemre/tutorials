@@ -1,5 +1,5 @@
 +++
-tags = ["git"]
+tags = ["git", "türkçe"]
 Description = "Bir sunucuda birden fazla repo clone'lamak"
 date = "2024-10-17T12:03:03+03:00"
 menu = "main"

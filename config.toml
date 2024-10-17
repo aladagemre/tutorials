@@ -1,25 +1,29 @@
 baseurl = "https://tuts.emrealadag.com"
 languageCode = "en-us"
 title = "Tutorials by Ahmet Emre Aladağ"
-theme = "greyshade"
+theme = "github.com/nodejh/hugo-theme-mini"
+
+
+[taxonomies]
+category = "categories"
+tag = "tags"
 
 [author]
 name = "Ahmet Emre Aladağ"
 email = "aladagemre@gmail.com"
 website = "http://www.emrealadag.com"
 
-[taxonomies]
-category = "categories"
-tag = "tags"
 
 [params]
 description = "Tutorials by Ahmet Emre Aladağ."
 subscribe_rss = "/index.xml"
 subscribe_email = ""
 menu_home_text = "Tutorial Home"
-menu_about_url = "http://www.emrealadag.com"
+menu_about_url = "https://www.emrealadag.com"
 menu_about_text = "Personal Site"
 menu_archives_text = "Archives"
+
+enableGoogleAnalytics = true
 
 # social links
 googleplus_user = "ahmetemrealadag"

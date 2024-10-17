@@ -4,7 +4,7 @@ Description = "Installing Standalone Spark Cluster"
 date = "2015-10-26T16:09:37+02:00"
 menu = "main"
 title = "Installing Standalone Spark Cluster"
-summary = "In this tutorial"
+summary = "In this tutorial, we are going to install a standalone Spark Cluster."
 
 +++
 

@@ -4,7 +4,7 @@ Description = ""
 date = "2015-11-23T16:14:21+02:00"
 menu = "main"
 title = "Running RStudio on Remote Server"
-Summary = "running"
+Summary = "In this tutorial, we are going to build a Remote R Server."
 +++
 
 
