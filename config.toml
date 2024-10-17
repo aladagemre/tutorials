@@ -1,4 +1,4 @@
-baseurl = "http://tuts.emrealadag.com"
+baseurl = "https://tuts.emrealadag.com"
 languageCode = "en-us"
 title = "Tutorials by Ahmet Emre Aladağ"
 theme = "greyshade"
